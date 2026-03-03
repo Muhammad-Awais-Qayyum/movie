@@ -208,9 +208,9 @@ export default function Home() {
       );
     } else {
       setModalContent(
-        <div className="flex flex-col items-center justify-center py-16 text-slate-400">
-          <div className="spinner w-8 h-8 border-3 mb-4"></div>
-          <p className="text-lg">Fetching download links...</p>
+        <div className="flex flex-col items-center justify-center py-12 sm:py-16 text-slate-400">
+          <div className="spinner w-6 h-6 sm:w-8 sm:h-8 border-3 mb-3 sm:mb-4"></div>
+          <p className="text-base sm:text-lg">Fetching download links...</p>
         </div>
       );
       const content = await fetchAndRenderLinks(item.subjectId, item.detailPath, item.title, 0, 0);
@@ -236,10 +236,10 @@ export default function Home() {
       const streams = playData.streams || [];
 
       return (
-        <div className="space-y-6">
+        <div className="space-y-4 sm:space-y-6">
           {downloads.length > 0 && (
             <div>
-              <h3 className="text-lg font-bold text-rose-500 mb-3 flex items-center gap-2">
+              <h3 className="text-base sm:text-lg font-bold text-rose-500 mb-2 sm:mb-3 flex items-center gap-2">
                 <span>⬇</span> Download Links
               </h3>
               <div className="space-y-2">
@@ -248,19 +248,19 @@ export default function Home() {
                   return (
                     <div
                       key={idx}
-                      className="flex items-center justify-between p-4 rounded-xl bg-slate-800/50 border border-slate-700/50 hover:border-rose-500/50 transition-colors"
+                      className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 sm:gap-0 p-3 sm:p-4 rounded-xl bg-slate-800/50 border border-slate-700/50 hover:border-rose-500/50 transition-colors"
                     >
-                      <div className="flex items-center gap-4 flex-wrap text-sm text-slate-300">
-                        <span className="font-bold text-white text-base">{dl.resolution}p</span>
-                        <span>{dl.format}</span>
-                        <span>{dl.codecName}</span>
+                      <div className="flex items-center gap-2 sm:gap-4 flex-wrap text-xs sm:text-sm text-slate-300">
+                        <span className="font-bold text-white text-sm sm:text-base">{dl.resolution}p</span>
+                        <span className="hidden sm:inline">{dl.format}</span>
+                        <span className="hidden md:inline">{dl.codecName}</span>
                         <span>{formatSize(dl.size)}</span>
                         <span>{formatDuration(dl.duration)}</span>
                       </div>
                       <a
                         href={proxyUrl(dl.url, fname)}
                         download={fname}
-                        className="px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm transition-colors"
+                        className="w-full sm:w-auto px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs sm:text-sm transition-colors text-center"
                       >
                         Download
                       </a>
@@ -273,7 +273,7 @@ export default function Home() {
 
           {streams.length > 0 && (
             <div>
-              <h3 className="text-lg font-bold text-rose-500 mb-3 flex items-center gap-2">
+              <h3 className="text-base sm:text-lg font-bold text-rose-500 mb-2 sm:mb-3 flex items-center gap-2">
                 <span>▶</span> Stream Links
               </h3>
               <div className="space-y-2">
@@ -282,19 +282,19 @@ export default function Home() {
                   return (
                     <div
                       key={idx}
-                      className="flex items-center justify-between p-4 rounded-xl bg-slate-800/50 border border-slate-700/50 hover:border-rose-500/50 transition-colors"
+                      className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 sm:gap-0 p-3 sm:p-4 rounded-xl bg-slate-800/50 border border-slate-700/50 hover:border-rose-500/50 transition-colors"
                     >
-                      <div className="flex items-center gap-4 flex-wrap text-sm text-slate-300">
-                        <span className="font-bold text-white text-base">{s.resolutions}p</span>
-                        <span>{s.format}</span>
-                        <span>{s.codecName}</span>
+                      <div className="flex items-center gap-2 sm:gap-4 flex-wrap text-xs sm:text-sm text-slate-300">
+                        <span className="font-bold text-white text-sm sm:text-base">{s.resolutions}p</span>
+                        <span className="hidden sm:inline">{s.format}</span>
+                        <span className="hidden md:inline">{s.codecName}</span>
                         <span>{formatSize(s.size)}</span>
                         <span>{formatDuration(s.duration)}</span>
                       </div>
                       <a
                         href={proxyUrl(s.url, fname)}
                         download={fname}
-                        className="px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm transition-colors"
+                        className="w-full sm:w-auto px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs sm:text-sm transition-colors text-center"
                       >
                         Download
                       </a>
@@ -307,7 +307,7 @@ export default function Home() {
 
           {captions.length > 0 && (
             <div>
-              <h3 className="text-lg font-bold text-rose-500 mb-3 flex items-center gap-2">
+              <h3 className="text-base sm:text-lg font-bold text-rose-500 mb-2 sm:mb-3 flex items-center gap-2">
                 <span>🗂</span> Subtitles
               </h3>
               <div className="space-y-2">
@@ -316,17 +316,17 @@ export default function Home() {
                   return (
                     <div
                       key={idx}
-                      className="flex items-center justify-between p-4 rounded-xl bg-slate-800/50 border border-slate-700/50 hover:border-rose-500/50 transition-colors"
+                      className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 sm:gap-0 p-3 sm:p-4 rounded-xl bg-slate-800/50 border border-slate-700/50 hover:border-rose-500/50 transition-colors"
                     >
-                      <div className="flex items-center gap-4 flex-wrap text-sm text-slate-300">
-                        <span className="font-bold text-white text-base">{cap.lanName}</span>
+                      <div className="flex items-center gap-2 sm:gap-4 flex-wrap text-xs sm:text-sm text-slate-300">
+                        <span className="font-bold text-white text-sm sm:text-base">{cap.lanName}</span>
                         <span>({cap.lan})</span>
                         <span>{formatSize(cap.size)}</span>
                       </div>
                       <a
                         href={proxyUrl(cap.url, fname)}
                         download={fname}
-                        className="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm transition-colors"
+                        className="w-full sm:w-auto px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs sm:text-sm transition-colors text-center"
                       >
                         Download .srt
                       </a>
@@ -338,7 +338,7 @@ export default function Home() {
           )}
 
           {downloads.length === 0 && streams.length === 0 && captions.length === 0 && (
-            <div className="text-center py-16 text-slate-500">
+            <div className="text-center py-12 sm:py-16 text-slate-500 text-sm sm:text-base">
               No download links available for this content
             </div>
           )}
@@ -346,9 +346,9 @@ export default function Home() {
       );
     } catch (err: any) {
       return (
-        <div className="text-center py-16 text-rose-400">
-          <p className="text-lg font-semibold">Failed to fetch links</p>
-          <p className="text-sm mt-2">{err.message}</p>
+        <div className="text-center py-12 sm:py-16 text-rose-400">
+          <p className="text-base sm:text-lg font-semibold">Failed to fetch links</p>
+          <p className="text-xs sm:text-sm mt-2">{err.message}</p>
         </div>
       );
     }
@@ -368,53 +368,56 @@ export default function Home() {
     <div className="min-h-screen">
       {/* Header */}
       <header className="sticky top-0 z-50 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 border-b border-slate-700/50 backdrop-blur-xl">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
-          <div className="flex flex-col sm:flex-row items-center gap-4">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-3 sm:py-4 md:py-5">
+          <div className="flex flex-col gap-3 sm:gap-4">
             {/* Logo */}
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-rose-500 to-pink-600 flex items-center justify-center text-white font-bold text-lg shadow-lg shadow-rose-500/20">
+            <div className="flex items-center gap-2 sm:gap-3">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-rose-500 to-pink-600 flex items-center justify-center text-white font-bold text-base sm:text-lg shadow-lg shadow-rose-500/20">
                 ▶
               </div>
-              <h1 className="text-2xl font-bold bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">
+              <h1 className="text-lg sm:text-xl md:text-2xl font-bold bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">
                 MovieBox Downloader
               </h1>
             </div>
 
             {/* Search Bar */}
-            <div className="flex-1 w-full flex gap-3">
+            <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 w-full">
               <input
                 type="text"
                 value={keyword}
                 onChange={(e) => setKeyword(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && doSearch()}
                 placeholder="Search movies, series, music..."
-                className="flex-1 px-4 py-3 rounded-xl bg-slate-800/50 border border-slate-700/50 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-rose-500/50 focus:border-rose-500/50 transition-all"
+                className="flex-1 px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-slate-800/50 border border-slate-700/50 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-rose-500/50 focus:border-rose-500/50 transition-all text-sm sm:text-base"
                 autoFocus
               />
-              <select
-                value={subjectType}
-                onChange={(e) => setSubjectType(Number(e.target.value))}
-                className="px-4 py-3 rounded-xl bg-slate-800/50 border border-slate-700/50 text-white focus:outline-none focus:ring-2 focus:ring-rose-500/50 focus:border-rose-500/50 transition-all cursor-pointer min-w-[120px]"
-              >
-                <option value={0}>All</option>
-                <option value={1}>Movies</option>
-                <option value={2}>Series</option>
-                <option value={3}>Music</option>
-              </select>
-              <button
-                onClick={doSearch}
-                disabled={isSearching}
-                className="px-6 py-3 rounded-xl bg-gradient-to-r from-rose-500 to-pink-600 hover:from-rose-600 hover:to-pink-700 text-white font-semibold disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-lg shadow-rose-500/20 hover:shadow-rose-500/30 flex items-center gap-2"
-              >
-                {isSearching ? (
-                  <>
-                    <div className="spinner"></div>
-                    <span>Searching...</span>
-                  </>
-                ) : (
-                  'Search'
-                )}
-              </button>
+              <div className="flex gap-2 sm:gap-3">
+                <select
+                  value={subjectType}
+                  onChange={(e) => setSubjectType(Number(e.target.value))}
+                  className="px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-slate-800/50 border border-slate-700/50 text-white focus:outline-none focus:ring-2 focus:ring-rose-500/50 focus:border-rose-500/50 transition-all cursor-pointer min-w-[100px] sm:min-w-[120px] text-sm sm:text-base"
+                >
+                  <option value={0}>All</option>
+                  <option value={1}>Movies</option>
+                  <option value={2}>Series</option>
+                  <option value={3}>Music</option>
+                </select>
+                <button
+                  onClick={doSearch}
+                  disabled={isSearching}
+                  className="px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl bg-gradient-to-r from-rose-500 to-pink-600 hover:from-rose-600 hover:to-pink-700 text-white font-semibold disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-lg shadow-rose-500/20 hover:shadow-rose-500/30 flex items-center gap-2 text-sm sm:text-base whitespace-nowrap"
+                >
+                  {isSearching ? (
+                    <>
+                      <div className="spinner"></div>
+                      <span className="hidden sm:inline">Searching...</span>
+                      <span className="sm:hidden">...</span>
+                    </>
+                  ) : (
+                    'Search'
+                  )}
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -422,9 +425,9 @@ export default function Home() {
 
       {/* Status Bar */}
       {statusMsg && (
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 mt-3 sm:mt-4">
           <div
-            className={`px-4 py-3 rounded-xl ${
+            className={`px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl text-sm sm:text-base ${
               isError
                 ? 'bg-rose-500/10 border border-rose-500/50 text-rose-400'
                 : 'bg-slate-800/50 border border-slate-700/50 text-slate-300'
@@ -437,28 +440,28 @@ export default function Home() {
 
       {/* Stats */}
       {stats.fetched > 0 && (
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4 flex gap-3">
-          <div className="px-4 py-2 rounded-full bg-slate-800/50 border border-slate-700/50 text-sm text-slate-300">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 mt-3 sm:mt-4 flex flex-wrap gap-2 sm:gap-3">
+          <div className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-slate-800/50 border border-slate-700/50 text-xs sm:text-sm text-slate-300">
             Fetched: <span className="font-bold text-rose-400">{stats.fetched}</span>
           </div>
-          <div className="px-4 py-2 rounded-full bg-slate-800/50 border border-slate-700/50 text-sm text-slate-300">
+          <div className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-slate-800/50 border border-slate-700/50 text-xs sm:text-sm text-slate-300">
             Matched: <span className="font-bold text-rose-400">{stats.matched}</span>
           </div>
         </div>
       )}
 
       {/* Results Grid */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-4 sm:py-6 md:py-8">
         {results.length === 0 && !isSearching && (
-          <div className="text-center py-20">
-            <div className="text-6xl mb-4">🎬</div>
-            <p className="text-xl text-slate-400">No results found</p>
-            <p className="text-sm text-slate-500 mt-2">Try searching for a movie, series, or music</p>
+          <div className="text-center py-12 sm:py-16 md:py-20">
+            <div className="text-4xl sm:text-5xl md:text-6xl mb-3 sm:mb-4">🎬</div>
+            <p className="text-lg sm:text-xl text-slate-400">No results found</p>
+            <p className="text-xs sm:text-sm text-slate-500 mt-2">Try searching for a movie, series, or music</p>
           </div>
         )}
 
         {isSearching && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4 md:gap-6">
             {Array(8)
               .fill(0)
               .map((_, i) => (
@@ -467,7 +470,7 @@ export default function Home() {
           </div>
         )}
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4 md:gap-6">
           {results.map((item, i) => {
             const cover = item.cover?.url || item.coverUrl || '';
             const year = (item.releaseDate || '').substring(0, 4) || 'N/A';
@@ -488,42 +491,42 @@ export default function Home() {
                   <img
                     src={cover}
                     alt={item.title}
-                    className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-48 sm:h-56 md:h-64 object-cover group-hover:scale-105 transition-transform duration-300"
                     loading="lazy"
                     onError={(e) => {
                       (e.target as HTMLImageElement).style.display = 'none';
                     }}
                   />
                 ) : (
-                  <div className="w-full h-64 bg-gradient-to-br from-slate-700 to-slate-800 flex items-center justify-center text-6xl">
+                  <div className="w-full h-48 sm:h-56 md:h-64 bg-gradient-to-br from-slate-700 to-slate-800 flex items-center justify-center text-4xl sm:text-5xl md:text-6xl">
                     🎬
                   </div>
                 )}
 
                 {/* Card Body */}
-                <div className="p-5">
-                  <h3 className="text-lg font-bold text-white mb-3 line-clamp-2">{item.title}</h3>
+                <div className="p-3 sm:p-4 md:p-5">
+                  <h3 className="text-base sm:text-lg font-bold text-white mb-2 sm:mb-3 line-clamp-2">{item.title}</h3>
 
                   {/* Tags */}
-                  <div className="flex flex-wrap gap-2 mb-3">
-                    <span className="px-2.5 py-1 rounded-lg bg-blue-500/20 text-blue-300 text-xs font-semibold">
+                  <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-2 sm:mb-3">
+                    <span className="px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-lg bg-blue-500/20 text-blue-300 text-[10px] sm:text-xs font-semibold">
                       {year}
                     </span>
-                    <span className="px-2.5 py-1 rounded-lg bg-rose-500/20 text-rose-300 text-xs font-semibold">
+                    <span className="px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-lg bg-rose-500/20 text-rose-300 text-[10px] sm:text-xs font-semibold">
                       {type}
                     </span>
                     {rating !== '—' && (
-                      <span className="px-2.5 py-1 rounded-lg bg-emerald-500/20 text-emerald-300 text-xs font-semibold">
+                      <span className="px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-lg bg-emerald-500/20 text-emerald-300 text-[10px] sm:text-xs font-semibold">
                         ⭐ {rating}
                       </span>
                     )}
                     {country && (
-                      <span className="px-2.5 py-1 rounded-lg bg-amber-500/20 text-amber-300 text-xs font-semibold">
+                      <span className="px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-lg bg-amber-500/20 text-amber-300 text-[10px] sm:text-xs font-semibold">
                         {country}
                       </span>
                     )}
                     {duration && (
-                      <span className="px-2.5 py-1 rounded-lg bg-purple-500/20 text-purple-300 text-xs font-semibold">
+                      <span className="px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-lg bg-purple-500/20 text-purple-300 text-[10px] sm:text-xs font-semibold">
                         {duration}
                       </span>
                     )}
@@ -531,25 +534,25 @@ export default function Home() {
 
                   {/* Genre */}
                   {genre && (
-                    <p className="text-sm text-slate-400 mb-2 line-clamp-1">{genre}</p>
+                    <p className="text-xs sm:text-sm text-slate-400 mb-1.5 sm:mb-2 line-clamp-1">{genre}</p>
                   )}
 
                   {/* Description */}
                   {desc && (
-                    <p className="text-sm text-slate-500 mb-4 line-clamp-2">{desc}</p>
+                    <p className="text-xs sm:text-sm text-slate-500 mb-3 sm:mb-4 line-clamp-2">{desc}</p>
                   )}
 
                   {/* Actions */}
-                  <div className="flex gap-2">
+                  <div className="flex gap-1.5 sm:gap-2">
                     <button
                       onClick={() => openDownloads(i)}
-                      className="flex-1 px-4 py-2 rounded-lg bg-gradient-to-r from-rose-500 to-pink-600 hover:from-rose-600 hover:to-pink-700 text-white font-semibold text-sm transition-all"
+                      className="flex-1 px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 rounded-lg bg-gradient-to-r from-rose-500 to-pink-600 hover:from-rose-600 hover:to-pink-700 text-white font-semibold text-xs sm:text-sm transition-all"
                     >
-                      ⬇ Downloads
+                      <span className="hidden sm:inline">⬇ </span>Downloads
                     </button>
                     <button
                       onClick={() => openDetails(i)}
-                      className="px-4 py-2 rounded-lg bg-slate-700/50 hover:bg-slate-700 border border-slate-600/50 hover:border-rose-500/50 text-slate-300 hover:text-white font-semibold text-sm transition-all"
+                      className="px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 rounded-lg bg-slate-700/50 hover:bg-slate-700 border border-slate-600/50 hover:border-rose-500/50 text-slate-300 hover:text-white font-semibold text-xs sm:text-sm transition-all"
                     >
                       Details
                     </button>
@@ -564,28 +567,28 @@ export default function Home() {
       {/* Modal */}
       {modalOpen && (
         <div
-          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-3 sm:p-4"
           onClick={(e) => {
             if (e.target === e.currentTarget) setModalOpen(false);
           }}
         >
           <div
-            className="bg-slate-900 border border-slate-700/50 rounded-2xl w-full max-w-2xl max-h-[85vh] overflow-y-auto shadow-2xl"
+            className="bg-slate-900 border border-slate-700/50 rounded-xl sm:rounded-2xl w-full max-w-2xl max-h-[90vh] sm:max-h-[85vh] overflow-y-auto shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header */}
-            <div className="sticky top-0 bg-slate-900/95 backdrop-blur-sm border-b border-slate-700/50 px-6 py-4 flex items-center justify-between">
-              <h2 className="text-xl font-bold text-white line-clamp-1">{modalData?.title || 'Loading...'}</h2>
+            <div className="sticky top-0 bg-slate-900/95 backdrop-blur-sm border-b border-slate-700/50 px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between">
+              <h2 className="text-base sm:text-lg md:text-xl font-bold text-white line-clamp-1 pr-2">{modalData?.title || 'Loading...'}</h2>
               <button
                 onClick={() => setModalOpen(false)}
-                className="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-slate-800 text-slate-400 hover:text-white transition-colors text-2xl leading-none"
+                className="w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center rounded-lg hover:bg-slate-800 text-slate-400 hover:text-white transition-colors text-xl sm:text-2xl leading-none flex-shrink-0"
               >
                 ×
               </button>
             </div>
 
             {/* Modal Content */}
-            <div className="p-6">{modalContent}</div>
+            <div className="p-4 sm:p-6">{modalContent}</div>
           </div>
         </div>
       )}
@@ -593,39 +596,39 @@ export default function Home() {
       {/* Details Modal */}
       {detailsModalOpen && (
         <div
-          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 overflow-y-auto"
+          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-3 sm:p-4 overflow-y-auto"
           onClick={(e) => {
             if (e.target === e.currentTarget) setDetailsModalOpen(false);
           }}
         >
           <div
-            className="bg-slate-900 border border-slate-700/50 rounded-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto shadow-2xl my-8"
+            className="bg-slate-900 border border-slate-700/50 rounded-xl sm:rounded-2xl w-full max-w-4xl max-h-[95vh] sm:max-h-[90vh] overflow-y-auto shadow-2xl my-4 sm:my-8"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header */}
-            <div className="sticky top-0 bg-slate-900/95 backdrop-blur-sm border-b border-slate-700/50 px-6 py-4 flex items-center justify-between z-10">
-              <h2 className="text-2xl font-bold text-white line-clamp-1">
+            <div className="sticky top-0 bg-slate-900/95 backdrop-blur-sm border-b border-slate-700/50 px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between z-10">
+              <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-white line-clamp-1 pr-2">
                 {detailsData?.subject?.title || 'Loading...'}
               </h2>
               <button
                 onClick={() => setDetailsModalOpen(false)}
-                className="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-slate-800 text-slate-400 hover:text-white transition-colors text-2xl leading-none"
+                className="w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center rounded-lg hover:bg-slate-800 text-slate-400 hover:text-white transition-colors text-xl sm:text-2xl leading-none flex-shrink-0"
               >
                 ×
               </button>
             </div>
 
             {/* Modal Content */}
-            <div className="p-6">
+            <div className="p-4 sm:p-6">
               {isLoadingDetails ? (
-                <div className="flex flex-col items-center justify-center py-16 text-slate-400">
-                  <div className="spinner w-8 h-8 mb-4"></div>
-                  <p className="text-lg">Loading details...</p>
+                <div className="flex flex-col items-center justify-center py-12 sm:py-16 text-slate-400">
+                  <div className="spinner w-6 h-6 sm:w-8 sm:h-8 mb-3 sm:mb-4"></div>
+                  <p className="text-base sm:text-lg">Loading details...</p>
                 </div>
               ) : detailsData?.error ? (
-                <div className="text-center py-16 text-rose-400">
-                  <p className="text-lg font-semibold">Failed to load details</p>
-                  <p className="text-sm mt-2">{detailsData.error}</p>
+                <div className="text-center py-12 sm:py-16 text-rose-400">
+                  <p className="text-base sm:text-lg font-semibold">Failed to load details</p>
+                  <p className="text-xs sm:text-sm mt-2">{detailsData.error}</p>
                 </div>
               ) : detailsData?.subject ? (
                 <DetailsContent data={detailsData} />
@@ -663,47 +666,47 @@ function DetailsContent({ data }: { data: any }) {
   const seasons = resource.seasons || [];
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       {/* Hero Section */}
-      <div className="flex flex-col md:flex-row gap-6">
+      <div className="flex flex-col md:flex-row gap-4 sm:gap-6">
         {/* Cover Image */}
-        <div className="flex-shrink-0">
+        <div className="flex-shrink-0 mx-auto md:mx-0">
           {cover ? (
             <img
               src={cover}
               alt={subject.title}
-              className="w-full md:w-64 h-96 object-cover rounded-xl shadow-xl"
+              className="w-full sm:w-56 md:w-64 h-auto sm:h-80 md:h-96 object-cover rounded-xl shadow-xl"
             />
           ) : (
-            <div className="w-full md:w-64 h-96 bg-gradient-to-br from-slate-700 to-slate-800 rounded-xl flex items-center justify-center text-8xl">
+            <div className="w-full sm:w-56 md:w-64 h-64 sm:h-80 md:h-96 bg-gradient-to-br from-slate-700 to-slate-800 rounded-xl flex items-center justify-center text-5xl sm:text-6xl md:text-8xl">
               🎬
             </div>
           )}
         </div>
 
         {/* Info Section */}
-        <div className="flex-1 space-y-4">
+        <div className="flex-1 space-y-3 sm:space-y-4">
           <div>
-            <h1 className="text-3xl font-bold text-white mb-2">{subject.title}</h1>
-            <div className="flex flex-wrap gap-2 mb-4">
-              <span className="px-3 py-1 rounded-lg bg-blue-500/20 text-blue-300 text-sm font-semibold">
+            <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2">{subject.title}</h1>
+            <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-3 sm:mb-4">
+              <span className="px-2 sm:px-3 py-1 rounded-lg bg-blue-500/20 text-blue-300 text-xs sm:text-sm font-semibold">
                 {year}
               </span>
-              <span className="px-3 py-1 rounded-lg bg-rose-500/20 text-rose-300 text-sm font-semibold">
+              <span className="px-2 sm:px-3 py-1 rounded-lg bg-rose-500/20 text-rose-300 text-xs sm:text-sm font-semibold">
                 {type}
               </span>
               {rating !== '—' && (
-                <span className="px-3 py-1 rounded-lg bg-emerald-500/20 text-emerald-300 text-sm font-semibold">
+                <span className="px-2 sm:px-3 py-1 rounded-lg bg-emerald-500/20 text-emerald-300 text-xs sm:text-sm font-semibold">
                   ⭐ {rating} {ratingCount > 0 && `(${ratingCount.toLocaleString()})`}
                 </span>
               )}
               {country && (
-                <span className="px-3 py-1 rounded-lg bg-amber-500/20 text-amber-300 text-sm font-semibold">
+                <span className="px-2 sm:px-3 py-1 rounded-lg bg-amber-500/20 text-amber-300 text-xs sm:text-sm font-semibold">
                   {country}
                 </span>
               )}
               {duration && (
-                <span className="px-3 py-1 rounded-lg bg-purple-500/20 text-purple-300 text-sm font-semibold">
+                <span className="px-2 sm:px-3 py-1 rounded-lg bg-purple-500/20 text-purple-300 text-xs sm:text-sm font-semibold">
                   {duration}
                 </span>
               )}
@@ -712,15 +715,15 @@ function DetailsContent({ data }: { data: any }) {
 
           {genre && (
             <div>
-              <h3 className="text-sm font-semibold text-slate-400 mb-1">Genre</h3>
-              <p className="text-white">{genre}</p>
+              <h3 className="text-xs sm:text-sm font-semibold text-slate-400 mb-1">Genre</h3>
+              <p className="text-sm sm:text-base text-white">{genre}</p>
             </div>
           )}
 
           {description && (
             <div>
-              <h3 className="text-sm font-semibold text-slate-400 mb-2">Description</h3>
-              <p className="text-slate-300 leading-relaxed">{description}</p>
+              <h3 className="text-xs sm:text-sm font-semibold text-slate-400 mb-2">Description</h3>
+              <p className="text-sm sm:text-base text-slate-300 leading-relaxed">{description}</p>
             </div>
           )}
         </div>
@@ -728,38 +731,38 @@ function DetailsContent({ data }: { data: any }) {
 
       {/* Cast & Crew */}
       {(cast.length > 0 || director.length > 0 || writer.length > 0) && (
-        <div className="border-t border-slate-700/50 pt-6">
-          <h3 className="text-lg font-bold text-rose-500 mb-4">Cast & Crew</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="border-t border-slate-700/50 pt-4 sm:pt-6">
+          <h3 className="text-base sm:text-lg font-bold text-rose-500 mb-3 sm:mb-4">Cast & Crew</h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
             {director.length > 0 && (
               <div>
-                <h4 className="text-sm font-semibold text-slate-400 mb-2">Director</h4>
+                <h4 className="text-xs sm:text-sm font-semibold text-slate-400 mb-1.5 sm:mb-2">Director</h4>
                 <div className="space-y-1">
                   {director.map((d: any, idx: number) => (
-                    <p key={idx} className="text-white">{d.name || d}</p>
+                    <p key={idx} className="text-sm sm:text-base text-white">{d.name || d}</p>
                   ))}
                 </div>
               </div>
             )}
             {writer.length > 0 && (
               <div>
-                <h4 className="text-sm font-semibold text-slate-400 mb-2">Writer</h4>
+                <h4 className="text-xs sm:text-sm font-semibold text-slate-400 mb-1.5 sm:mb-2">Writer</h4>
                 <div className="space-y-1">
                   {writer.map((w: any, idx: number) => (
-                    <p key={idx} className="text-white">{w.name || w}</p>
+                    <p key={idx} className="text-sm sm:text-base text-white">{w.name || w}</p>
                   ))}
                 </div>
               </div>
             )}
             {cast.length > 0 && (
               <div>
-                <h4 className="text-sm font-semibold text-slate-400 mb-2">Cast</h4>
+                <h4 className="text-xs sm:text-sm font-semibold text-slate-400 mb-1.5 sm:mb-2">Cast</h4>
                 <div className="space-y-1">
                   {cast.slice(0, 10).map((c: any, idx: number) => (
-                    <p key={idx} className="text-white">{c.name || c}</p>
+                    <p key={idx} className="text-sm sm:text-base text-white">{c.name || c}</p>
                   ))}
                   {cast.length > 10 && (
-                    <p className="text-slate-400 text-sm">+{cast.length - 10} more</p>
+                    <p className="text-slate-400 text-xs sm:text-sm">+{cast.length - 10} more</p>
                   )}
                 </div>
               </div>
@@ -770,16 +773,16 @@ function DetailsContent({ data }: { data: any }) {
 
       {/* Seasons (for Series) */}
       {seasons.length > 0 && (
-        <div className="border-t border-slate-700/50 pt-6">
-          <h3 className="text-lg font-bold text-rose-500 mb-4">Seasons</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+        <div className="border-t border-slate-700/50 pt-4 sm:pt-6">
+          <h3 className="text-base sm:text-lg font-bold text-rose-500 mb-3 sm:mb-4">Seasons</h3>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 sm:gap-3">
             {seasons.map((s: any) => (
               <div
                 key={s.se}
-                className="p-4 rounded-xl bg-slate-800/50 border border-slate-700/50 hover:border-rose-500/50 transition-colors"
+                className="p-3 sm:p-4 rounded-xl bg-slate-800/50 border border-slate-700/50 hover:border-rose-500/50 transition-colors"
               >
-                <p className="font-semibold text-white">Season {s.se}</p>
-                <p className="text-sm text-slate-400 mt-1">{s.maxEp} episodes</p>
+                <p className="font-semibold text-white text-sm sm:text-base">Season {s.se}</p>
+                <p className="text-xs sm:text-sm text-slate-400 mt-1">{s.maxEp} episodes</p>
               </div>
             ))}
           </div>
@@ -825,9 +828,9 @@ function EpisodePicker({
   async function handleFetchLinks() {
     setIsLoading(true);
     setLinksContent(
-      <div className="flex flex-col items-center justify-center py-8 text-slate-400">
-        <div className="spinner w-6 h-6 mb-3"></div>
-        <p>Fetching S{selectedSeason} E{selectedEpisode}...</p>
+      <div className="flex flex-col items-center justify-center py-6 sm:py-8 text-slate-400">
+        <div className="spinner w-5 h-5 sm:w-6 sm:h-6 mb-2 sm:mb-3"></div>
+        <p className="text-sm sm:text-base">Fetching S{selectedSeason} E{selectedEpisode}...</p>
       </div>
     );
 
@@ -838,15 +841,15 @@ function EpisodePicker({
   }
 
   return (
-    <div className="space-y-4">
-      <h3 className="text-lg font-bold text-rose-500 flex items-center gap-2">
+    <div className="space-y-3 sm:space-y-4">
+      <h3 className="text-base sm:text-lg font-bold text-rose-500 flex items-center gap-2">
         <span>🎬</span> Select Season & Episode
       </h3>
-      <div className="flex gap-3 flex-wrap items-center">
+      <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 items-stretch sm:items-center">
         <select
           value={selectedSeason}
           onChange={(e) => setSelectedSeason(Number(e.target.value))}
-          className="px-4 py-2.5 rounded-xl bg-slate-800/50 border border-slate-700/50 text-white focus:outline-none focus:ring-2 focus:ring-rose-500/50 focus:border-rose-500/50 transition-all cursor-pointer"
+          className="px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-slate-800/50 border border-slate-700/50 text-white focus:outline-none focus:ring-2 focus:ring-rose-500/50 focus:border-rose-500/50 transition-all cursor-pointer text-sm sm:text-base"
         >
           {seasons.map((s) => (
             <option key={s.se} value={s.se}>
@@ -857,7 +860,7 @@ function EpisodePicker({
         <select
           value={selectedEpisode}
           onChange={(e) => setSelectedEpisode(Number(e.target.value))}
-          className="px-4 py-2.5 rounded-xl bg-slate-800/50 border border-slate-700/50 text-white focus:outline-none focus:ring-2 focus:ring-rose-500/50 focus:border-rose-500/50 transition-all cursor-pointer"
+          className="px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-slate-800/50 border border-slate-700/50 text-white focus:outline-none focus:ring-2 focus:ring-rose-500/50 focus:border-rose-500/50 transition-all cursor-pointer text-sm sm:text-base"
         >
           {Array.from({ length: maxEp }, (_, i) => i + 1).map((ep) => (
             <option key={ep} value={ep}>
@@ -868,7 +871,7 @@ function EpisodePicker({
         <button
           onClick={handleFetchLinks}
           disabled={isLoading}
-          className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-rose-500 to-pink-600 hover:from-rose-600 hover:to-pink-700 text-white font-semibold disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center gap-2"
+          className="px-4 sm:px-6 py-2 sm:py-2.5 rounded-xl bg-gradient-to-r from-rose-500 to-pink-600 hover:from-rose-600 hover:to-pink-700 text-white font-semibold disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2 text-sm sm:text-base"
         >
           {isLoading ? (
             <>
